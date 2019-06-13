@@ -157,19 +157,20 @@
 					<div
 						class="appointment-form-wrapper theme-custom-box-shadow text-center clearfix wow zoomIn animated">
 						<h3 class="join-heading join-heading-alt">Request Appointment</h3>
-						<form class="appoinment-form">
+						<form class="appoinment-form" [formGroup]="appointmentForm" (ngSubmit)="onSubmit()">
 							<div class="form-group col-md-6">
-								<input id="your_name" class="form-control" placeholder="Name" type="text" />
+								<input class="form-control" formControlName='name' placeholder="Name" type="text" />
 							</div>
 							<div class="form-group col-md-6">
-								<input id="your_email" class="form-control" placeholder="Email" type="email" />
+								<input class="form-control" formControlName='email' placeholder="Email" type="email" />
 							</div>
 							<div class="form-group col-md-6">
-								<input id="your_phone" class="form-control" placeholder="Phone" type="text" />
+								<input class="form-control" formControlName='phone' placeholder="Phone" type="number" />
 							</div>
 							<div class="form-group col-md-6">
 								<div class="select-style">
-									<select class="form-control" name="your_center">
+									<select class="form-control"formControlName='city'  name="your_center">
+										<option value="" selected disabled>Select Your City</option>
 										<option>Donation Center</option>
 										<option>Los Angles</option>
 										<option>California</option>
@@ -177,17 +178,17 @@
 								</div>
 							</div>
 							<div class="form-group col-md-6">
-								<input id="your_date" class="form-control" placeholder="Date" type="text" />
+								<input class="form-control" formControlName='date' placeholder="Date" type="date" />
 							</div>
 							<div class="form-group col-md-6">
-								<input id="your_time" class="form-control" placeholder="Time" type="text" />
+								<input id="your_time" class="form-control" formControlName='age' placeholder="Age" type="number" />
 							</div>
 							<div class="form-group col-md-12 col-sm-12 col-xs-12">
 								<textarea id="textarea_message" class="form-control" rows="4"
-									placeholder="Your Message..."></textarea>
+									formControlName='message' placeholder="Your Message..."></textarea>
 							</div>
 							<div class="form-group col-md-12 col-sm-12 col-xs-12">
-								<button id="btn_submit" class="btn btn-theme" type="submit">Get Appointment</button>
+								<button id="btn_submit" [disabled]="!appointmentForm.valid" class="btn btn-theme" type="submit">Get Appointment</button>
 							</div>
 						</form>
 					</div>
